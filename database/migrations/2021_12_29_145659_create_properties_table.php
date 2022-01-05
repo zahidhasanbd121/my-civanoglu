@@ -17,7 +17,7 @@ class CreatePropertiesTable extends Migration
             $table->id();
             $table->string('name');
 
-            $table->unsignedBigInteger('featured_media_id');
+            $table->string('featured_image');
             $table->unsignedBigInteger('location_id');
 
             $table->unsignedBigInteger('price');
@@ -26,8 +26,8 @@ class CreatePropertiesTable extends Migration
 
             $table->unsignedBigInteger('bedrooms')->nullable();
             $table->unsignedBigInteger('bathrooms')->nullable();
-            $table->unsignedBigInteger('net-sqm')->nullable();
-            $table->unsignedBigInteger('gross-sqm')->nullable();
+            $table->unsignedBigInteger('net_sqm')->nullable();
+            $table->unsignedBigInteger('gross_sqm')->nullable();
             $table->unsignedBigInteger('pool')->nullable()->comment('0=no, 1=private, 2=public, 3=both');
 
             $table->string('overview');
@@ -36,7 +36,7 @@ class CreatePropertiesTable extends Migration
 
             $table->timestamps();
 
-            $table->foreign('featured_media_id')->references('id')->on('media');
+            //$table->foreign('featured_media_id')->references('id')->on('media');
             $table->foreign('location_id')->references('id')->on('locations');
         });
     }
