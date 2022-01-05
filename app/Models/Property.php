@@ -13,9 +13,9 @@ class Property extends Model
     //     $this->belongsTo(Media::class, 'featured_media_id');
     // }
     public function location() {
-        $this->belongsTo(Location::class, 'location_id');
+        return $this->belongsTo(Location::class, 'location_id');
     }
     public function gallery() {
-        $this->hasMany(Media::class, 'property_id');
+        return $this->hasMany(Media::class, 'property_id');
     }
 }

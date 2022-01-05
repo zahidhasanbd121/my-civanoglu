@@ -5,7 +5,7 @@
             <ul class="flex items-center">
                 <li><a class="text-base text-red-800" href="#">Property</a></li>
                 <li class="mx-3"><i class="fa fa-angle-right"></i></li>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing.</li>
+                <li>{{$property->name}}</li>
             </ul>
         </div>
     </div>
@@ -15,14 +15,9 @@
         <div class="container mx-auto">
             <div class="flex justify-between">
                 <div class="w-8/12">
-                    <h2 class="text-3xl text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam enim
-                        reprehenderit quas</h2>
+                    <h2 class="text-3xl text-gray-600">{{$property->name}}</h2>
                     <h3 class="text-lg mt-2">Price: <span class="text-red-800">
-                        @if ($property)
-                                {{ number_format($property->price, 2, ',', ',') }} TL
-                            @else
-                                500,00,00 TL
-                            @endif
+                    {{ number_format($property->price, 2, ',', ',') }} TL
                 </span></h3>
                 </div>
                 <div class="w-3/12">
@@ -60,46 +55,22 @@
             <div class="w-9/12">
                 <div id="slider" class="">
                     <div class="gallery-slider">
-                        <div style="background-image: url(/img/hero-bg.jpg)" class="single-gallery-item bg-cover bg-center">test</div>
-                        <div style="background-image: url(/img/hero-bg.jpg)" class="single-gallery-item bg-cover bg-center">test</div>
-                        <div style="background-image: url(/img/hero-bg.jpg)" class="single-gallery-item bg-cover bg-center">test</div>
-                        <div style="background-image: url(/img/hero-bg.jpg)" class="single-gallery-item bg-cover bg-center">test</div>
-                        <div style="background-image: url(/img/hero-bg.jpg)" class="single-gallery-item bg-cover bg-center">test</div>
-                        <div style="background-image: url(/img/hero-bg.jpg)" class="single-gallery-item bg-cover bg-center">test</div>
-                        <div style="background-image: url(/img/hero-bg.jpg)" class="single-gallery-item bg-cover bg-center">test</div>
-                        <div style="background-image: url(/img/hero-bg.jpg)" class="single-gallery-item bg-cover bg-center">test</div>
-                        <div style="background-image: url(/img/hero-bg.jpg)" class="single-gallery-item bg-cover bg-center">test</div>
-                        <div style="background-image: url(/img/hero-bg.jpg)" class="single-gallery-item bg-cover bg-center">test</div>
-                        <div style="background-image: url(/img/hero-bg.jpg)" class="single-gallery-item bg-cover bg-center">test</div>
-                        <div style="background-image: url(/img/hero-bg.jpg)" class="single-gallery-item bg-cover bg-center">test</div>
-                        <div style="background-image: url(/img/hero-bg.jpg)" class="single-gallery-item bg-cover bg-center">test</div>
+                        @foreach($property->gallery as $gallery)
+                        <div style="background-image: url({{$gallery->name}})" class="single-gallery-item bg-cover bg-center"></div>
+                        @endforeach
                     </div>
 
                     <div class="thumbnail-slider">
-                    <div style="background-image: url(/img/hero-bg.jpg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                    <div style="background-image: url(/img/hero-bg.jpg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                    <div style="background-image: url(/img/hero-bg.jpg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                    <div style="background-image: url(/img/hero-bg.jpg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                    <div style="background-image: url(/img/hero-bg.jpg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                    <div style="background-image: url(/img/hero-bg.jpg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                    <div style="background-image: url(/img/hero-bg.jpg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                    <div style="background-image: url(/img/hero-bg.jpg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                    <div style="background-image: url(/img/hero-bg.jpg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                    <div style="background-image: url(/img/hero-bg.jpg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                    <div style="background-image: url(/img/hero-bg.jpg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                    <div style="background-image: url(/img/hero-bg.jpg)" class="single-thumbnail-item bg-cover bg-center"></div>
-                    <div style="background-image: url(/img/hero-bg.jpg)" class="single-thumbnail-item bg-cover bg-center"></div>
+                    @foreach($property->gallery as $gallery)
+                    <div style="background-image: url({{$gallery->name}})" class="single-thumbnail-item bg-cover bg-center"></div>
+                    @endforeach
                     </div>
                 </div>
                 {{-- Overview --}}
                 <div class="flex justify-between items-center bg-white p-8 mt-10 shadow-sm">
                     <h4 class="text-lg w-2/12">Overview</h4>
                     <div class="border-l-2 border-gray-300 pl-5 ml-5 w-10/12 text-base">
-                        <p>Beachfront suites located at the starting point of the Blue Voyage in Bodrum, these sea view
-                            properties are designed and operated in partnership with a worldwide hotel chain and feature
-                            outstanding on-site facilities for 5-star luxury living guaranteed – anyone who purchases
-                            here can rest assured that these are the very best in fully-managed and fully-serviced
-                            residences in all of Turkey.</p>
+                        <p>{{$property->overview}}</p>
                     </div>
                 </div>
 
@@ -113,7 +84,15 @@
                                     <div class="flex"><i
                                             class="fa fa-home mr-2 text-red-400 w-5 text-center"></i><span
                                             class="text-sm">Type:</span></div>
-                                    <span class="ml-2 font-bold">Penthouse</span>
+                                    <span class="ml-2 font-bold">
+                                        @if($property->type == 1)
+                                            Apartment
+                                        @elseif($property->type == 2)
+                                            Villa
+                                        @else
+                                            Land
+                                        @endif
+                                    </span>
                                 </li>
                                 <li class="flex text-sm">
                                     <div class="flex"><i
