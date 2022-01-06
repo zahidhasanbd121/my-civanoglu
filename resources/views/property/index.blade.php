@@ -14,7 +14,7 @@
     <div class="bg-white py-8">
         <div class="container mx-auto">
             <h2 class="text-3xl text-gray-600">Properties
-                @if(request('type') == 0)
+                @if(request('type') == '0')
                 - Land
                 @elseif(request('type') == 1)
                 - Apartment
