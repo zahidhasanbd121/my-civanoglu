@@ -1,14 +1,13 @@
-<form action="{{route('properties')}}" method="GET" class="flex justify-between">
-                    
+<form action="{{route('properties')}}" method="GET" class="flex justify-between">                 
     <div class="flex w-7/12 justify-between items-center">
-        <div class="flex flex-col mx-3">
-            <label for="sale">Buy or Rent</label>
-            <select id="sale" name="sale" class="focus:ring-0">
-                <option value="">Buy or Rent</option>
-                <option {{request('sale') == '1' ? 'selected="selected"' : ''}} value="1">Buy</option>
-                <option {{request('sale') == '0' ? 'selected="selected"' : ''}} value="0">Rent</option>
-            </select>
-        </div>
+        <div class="flex flex-col md:mx-3">
+                <label for="sale">Buy or Rent</label>
+                <select id="sale" name="sale" class="mb-3 md:mb-0 md:border-0 focus:ring-0">
+                    <option value="">Buy or Rent</option>
+                    <option {{request('sale') == '1' ? 'selected="selected"' : ''}} value="1">Buy</option>
+                    <option {{request('sale') == '0' ? 'selected="selected"' : ''}} value="0">Rent</option>
+                </select>
+            </div>
         <div class="py-3 self-center border-gray-500 border"></div>
         <div class="flex flex-col mx-3">
             <label for="type">Type</label>

@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 80px;
 }
 
- .vertical-search-form > form > div {
+  .vertical-search-form > form > div {
     display: block;
     min-width: 100%;
 }
@@ -99,8 +99,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .vertical-search-form > form > div > div {
-    display: block;
-    min-width: 100%;
     margin-bottom: 10px;
 }
 
@@ -111,6 +109,18 @@ h1, h2, h3, h4, h5, h6 {
 .vertical-search-form button {
     margin-top: 10px;
     min-width: 100%;
+} 
+
+.home-search label {
+    display: none;
+}
+
+.vertical-search-form label {
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 5px;
+    display: block;
+    opacity: .5;
 }
 
 
