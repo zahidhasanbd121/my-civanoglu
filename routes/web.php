@@ -22,6 +22,7 @@ use App\Http\Controllers\PropertyController;
 // });
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
+//Route::get('/email-test', [ContactController::class, 'test']);
 Route::get('/property/{id}', [PropertyController::class, 'single'])->name('single-property');
 Route::get('/properties/', [PropertyController::class, 'index'])->name('properties');
 Route::get('/page/{slug}', [PageController::class, 'single'])->name('page');

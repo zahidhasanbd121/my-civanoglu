@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -23,9 +25,16 @@ class ContactController extends Controller
         $contact->save();
 
         // send user & admin message
+        Mail::send(new ContactMail($contact));
 
-        return redirect(route('single-property', $property_id));
+        return redirect(route('single-property', $property_id))->with(['message' => 'Your message has been sent.']);
     }
+
+    // Check email sent
+    // public function test() {
+    //     Mail::send(new ContactMail());
+    //     dd('SENT');
+    // }
 
 
 }
