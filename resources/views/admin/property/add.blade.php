@@ -18,8 +18,8 @@
                     @csrf
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
-                            <label class="civanoglu-label" for="name">Title</label>
-                            <input class="civanoglu-input" type="text" id="name" name="name">
+                            <label class="civanoglu-label" for="name">Title <span class="required-text">*</span></label>
+                            <input class="civanoglu-input" type="text" id="name" name="name" required>
 
                             @error('name')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -27,8 +27,8 @@
                         </div>
 
                         <div class="flex-1 px-4">
-                            <label class="civanoglu-label" for="name_tr">Title - Turkish</label>
-                            <input class="civanoglu-input" type="text" id="name_tr" name="name_tr">
+                            <label class="civanoglu-label" for="name_tr">Title - Turkish <span class="required-text">*</span></label>
+                            <input class="civanoglu-input" type="text" id="name_tr" name="name_tr" required>
 
                             @error('name_tr')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -37,8 +37,8 @@
                     </div>
 
                     <div class="mb-6">
-                    <label class="civanoglu-label" for="featured_image">Featured Image</label>
-                            <input class="civanoglu-input" type="file" id="featured_image" name="featured_image">
+                    <label class="civanoglu-label" for="featured_image">Featured Image <span class="required-text">*</span></label>
+                            <input class="civanoglu-input" type="file" id="featured_image" name="featured_image" required>
 
                             @error('featured_image')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -47,8 +47,8 @@
 
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
-                            <label class="civanoglu-label" for="location_id">Location</label>
-                            <select class="civanoglu-label" name="location_id" id="location_id">
+                            <label class="civanoglu-label" for="location_id">Location <span class="required-text">*</span></label>
+                            <select class="civanoglu-label" name="location_id" id="location_id" required>
                                 <option value="">Select location</option>
                                 @foreach($locations as $location)
                                     <option value="{{$location->id}}">{{$location->name}}</option>
@@ -61,8 +61,8 @@
                         </div>
 
                         <div class="flex-1 px-4">
-                            <label class="civanoglu-label" for="price">Price</label>
-                            <input class="civanoglu-input" type="number" id="price" name="price">
+                            <label class="civanoglu-label" for="price">Price <span class="required-text">*</span></label>
+                            <input class="civanoglu-input" type="number" id="price" name="price" required>
 
                             @error('price')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -70,8 +70,8 @@
                         </div>
                         
                         <div class="flex-1 px-4">
-                            <label class="civanoglu-label" for="sale">For</label>
-                            <select class="civanoglu-label" name="sale" id="sale">
+                            <label class="civanoglu-label" for="sale">For <span class="required-text">*</span></label>
+                            <select class="civanoglu-label" name="sale" id="sale" required>
                                 <option value="">Select type</option>
                                 <option value="0">Rent</option>
                                 <option value="1">Sale</option>
@@ -83,8 +83,8 @@
                         </div>
                         
                         <div class="flex-1 px-4">
-                            <label class="civanoglu-label" for="type">Type</label>
-                            <select class="civanoglu-label" name="type" id="type">
+                            <label class="civanoglu-label" for="type">Type <span class="required-text">*</span></label>
+                            <select class="civanoglu-label" name="type" id="type" required>
                                 <option value="">Select property type</option>
                                 <option value="0">Land</option>
                                 <option value="1">Apartment</option>
@@ -98,6 +98,22 @@
                     </div>
 
                     <div class="flex -mx-4 mb-6">
+
+                        <div class="flex-1 px-4">
+                            <label class="civanoglu-label" for="drawing_rooms">Drawing rooms</label>
+                            <select class="civanoglu-input"  name="drawing_rooms" id="drawing_rooms">
+                                <option value="">Select one</option>
+
+                                @for($x = 0; $x <= 3; $x++)
+                                <option value="{{$x}}">{{$x}}</option>
+                                @endfor
+                            </select>
+
+                            @error('drawing_rooms')
+                            <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
+                            @enderror
+                        </div>
+
                         <div class="flex-1 px-4">
                             <label class="civanoglu-label" for="bedrooms">Bedrooms</label>
                             <select class="civanoglu-input"  name="bedrooms" id="bedrooms">
@@ -133,8 +149,8 @@
                         </div>
 
                         <div class="flex-1 px-4">
-                            <label class="civanoglu-label" for="net_sqm">Net square meeter</label>
-                            <input class="civanoglu-input" type="number" id="net_sqm" name="net_sqm">
+                            <label class="civanoglu-label" for="net_sqm">Net square meeter <span class="required-text">*</span></label>
+                            <input class="civanoglu-input" type="number" id="net_sqm" name="net_sqm" required>
 
                             @error('net_sqm')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -168,8 +184,8 @@
 
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
-                            <label class="civanoglu-label" for="overview">Overview</label>
-                            <textarea class="civanoglu-input" name="overview" id="overview" cols="30" rows="3"></textarea>
+                            <label class="civanoglu-label" for="overview">Overview <span class="required-text">*</span></label>
+                            <textarea class="civanoglu-input" name="overview" id="overview" cols="30" rows="3" required></textarea>
 
                             @error('overview')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -177,8 +193,8 @@
                         </div>
 
                         <div class="flex-1 px-4">
-                            <label class="civanoglu-label" for="overview_tr">Overview - TR</label>
-                            <textarea class="civanoglu-input" name="overview_tr" id="overview_tr" cols="30" rows="3"></textarea>
+                            <label class="civanoglu-label" for="overview_tr">Overview - TR <span class="required-text">*</span></label>
+                            <textarea class="civanoglu-input" name="overview_tr" id="overview_tr" cols="30" rows="3" required></textarea>
 
                             @error('overview_tr')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -188,8 +204,8 @@
 
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
-                            <label class="civanoglu-label" for="why_buy">Why buy</label>
-                            <textarea class="civanoglu-input" name="why_buy" id="why_buy" cols="30" rows="5"></textarea>
+                            <label class="civanoglu-label" for="why_buy">Why buy <span class="required-text">*</span></label>
+                            <textarea class="civanoglu-input" name="why_buy" id="why_buy" cols="30" rows="5" required></textarea>
 
                             @error('why_buy')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -197,8 +213,8 @@
                         </div>
 
                         <div class="flex-1 px-4">
-                            <label class="civanoglu-label" for="why_buy_tr">Why buy - TR</label>
-                            <textarea class="civanoglu-input" name="why_buy_tr" id="why_buy_tr" cols="30" rows="5"></textarea>
+                            <label class="civanoglu-label" for="why_buy_tr">Why buy - TR <span class="required-text">*</span></label>
+                            <textarea class="civanoglu-input" name="why_buy_tr" id="why_buy_tr" cols="30" rows="5" required></textarea>
 
                             @error('why_buy_tr')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -208,8 +224,8 @@
 
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
-                            <label class="civanoglu-label" for="description">Description</label>
-                            <textarea class="civanoglu-input" name="description" id="description" cols="30" rows="10"></textarea>
+                            <label class="civanoglu-label" for="description">Description <span class="required-text">*</span></label>
+                            <textarea class="civanoglu-input" name="description" id="description" cols="30" rows="10" required></textarea>
 
                             @error('description')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -217,8 +233,8 @@
                         </div>
 
                         <div class="flex-1 px-4">
-                            <label class="civanoglu-label" for="description_tr">Description - TR</label>
-                            <textarea class="civanoglu-input" name="description_tr" id="description_tr" cols="30" rows="10"></textarea>
+                            <label class="civanoglu-label" for="description_tr">Description - TR <span class="required-text">*</span></label>
+                            <textarea class="civanoglu-input" name="description_tr" id="description_tr" cols="30" rows="10" required></textarea>
 
                             @error('description_tr')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>

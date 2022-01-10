@@ -131,6 +131,10 @@ h1, h2, h3, h4, h5, h6 {
     @apply border border-x-gray-400 w-full px-4 py-2 block
 }
 
+.required-text {
+    @apply text-red-500;
+    font-family: sans-serif;
+}
 
 
 
