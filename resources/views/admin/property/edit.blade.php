@@ -19,7 +19,7 @@
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
                             <label class="civanoglu-label" for="name">Title</label>
-                            <input class="civanoglu-input" type="text" id="name" name="name">
+                            <input class="civanoglu-input" type="text" id="name" name="name" value="{{$property->name}}" required>
 
                             @error('name')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -51,10 +51,10 @@
                             <select class="civanoglu-label" name="location_id" id="location_id">
                                 <option value="">Select location</option>
                                 @foreach($locations as $location)
-                                    <option value="{{$location->id}}">{{$location->name}}</option>
+                                    <option {{$property->location->id == $location->id ? 'selected="selected"' : ''}} value="{{$location->id}}">{{$location->name}}</option>
                                 @endforeach
                             </select>
-
+                            
                             @error('location_id')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
                             @enderror
