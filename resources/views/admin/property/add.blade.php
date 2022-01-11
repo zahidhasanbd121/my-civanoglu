@@ -14,12 +14,12 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <form action="{{route('create-property')}}" method="post" class="p-6 bg-white border-b border-gray-200">
+                <form action="{{route('create-property')}}" method="post" class="p-6 bg-white border-b border-gray-200" enctype="multipart/form-data">
                     @csrf
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
                             <label class="civanoglu-label" for="name">Title <span class="required-text">*</span></label>
-                            <input class="civanoglu-input" type="text" id="name" name="name" value="{{old('name')}}" required>
+                            <input class="civanoglu-input" type="text" id="name" name="name" value="{{old('name')}}">
 
                             @error('name')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -28,7 +28,7 @@
 
                         <div class="flex-1 px-4">
                             <label class="civanoglu-label" for="name_tr">Title - Turkish <span class="required-text">*</span></label>
-                            <input class="civanoglu-input" type="text" id="name_tr" name="name_tr" value="{{old('name_tr')}}" required>
+                            <input class="civanoglu-input" type="text" id="name_tr" name="name_tr" value="{{old('name_tr')}}">
 
                             @error('name_tr')
                             <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
@@ -45,13 +45,22 @@
                             @enderror
                     </div>
 
+                    <div class="mb-6">
+                    <label class="civanoglu-label" for="gallery_images">Gallery Images <span class="required-text">*</span></label>
+                            <input class="civanoglu-input" type="file" id="gallery_images" name="gallery_images[]" value="{{old('gallery_images')}}" multiple required>
+
+                            @error('gallery_images')
+                            <p class="text-red-500 mt-2 text-sm">{{$message}}</p>
+                            @enderror
+                    </div>
+
                     <div class="flex -mx-4 mb-6">
                         <div class="flex-1 px-4">
                             <label class="civanoglu-label" for="location_id">Location <span class="required-text">*</span></label>
                             <select class="civanoglu-label" name="location_id" id="location_id" required>
                                 <option value="">Select location</option>
                                 @foreach($locations as $location)
-                                    <option {{old('location_id') == $location_id ? 'selected="selected"' : ''}} value="{{$location->id}}">{{$location->name}}</option>
+                                    <option {{old('location_id') == $location->id ? 'selected="selected"' : ''}}  value="{{$location->id}}">{{$location->name}}</option>
                                 @endforeach
                             </select>
 
